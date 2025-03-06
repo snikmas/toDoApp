@@ -1,0 +1,126 @@
+* {
+  box-sizing: border-box;
+  margin:0;
+  padding:0;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: rgb(232, 232, 232);
+}
+
+h1 {
+  text-align: center;
+}
+
+#form-div h1 {
+  margin-top:20vh;
+  line-height: 4rem;
+  font-weight: 700;  
+  
+  border:2px solid darkblue;
+}
+
+
+#form-div{
+  padding: 5vh 0;
+
+  border:2px solid darkcyan;
+  
+}
+
+form {
+  padding: 7vh 0;
+  display: flex;
+  justify-content: center;
+}
+
+input {
+  border:none;
+  width:40%;
+
+  font-size: 1.1em;
+  padding:10px 25px;
+
+  border-start-start-radius: 30px;
+  border-end-start-radius: 30px;
+
+}
+
+#add{
+  border:none;
+
+  display: flex;
+  align-items: center;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  padding:10px 14px;
+}
+
+
+
+/* ALL TASKS */
+
+.taskDone{
+  max-width:fit-content;
+  margin: 10px 10px;
+  
+}
+
+
+#allTasks {
+  padding:5vh 0;
+  background-color: blanchedalmond;
+
+}
+
+#allTasks h1 {
+  line-height: 2em;
+}
+
+
+/* lists */
+
+/* don't touch */
+.ul-container {
+  display: flex;
+  justify-content: center;
+}
+
+
+
+
+ul {
+  width: 40em;
+  list-style: none;
+
+  display: flex;
+  flex-direction: column;
+}
+
+ul li{
+  font-size: 20px;
+  border: 1px solid darkorange;
+  padding:2px 20px;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+li div {
+  /* border: 2px solid darkblue; */
+  width:100%;
+  align-items: center;
+  display: flex;
+}
+
+.remove {
+  border-radius: 20px 20px;
+
+  padding:4px;
+  display: flex;
+
+}
+
+
+
