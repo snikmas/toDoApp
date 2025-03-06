@@ -1,28 +1,51 @@
-const express = require('express');
-const mongodb = require('mongodb');
+import express from 'express';
+import MongoClient from 'mongodb';
+import 'dotenv/config'; 
+
 
 // creating a server
+const dirname = import.meta.dirname;
 const app = express();
 const PORT = process.env.PORT || 3000;
+const URI = process.env.DB_STRING
 
 // exttracting data from the form element and add them to the body property in the req object
-app.use(express.urlencoded({ extended: true}))
+
+
+// server
+MongoClient.MongoClient.connect(URI)
+  .then(client => {
+    const db = client.db('toDoApp');
+    const tasksCollection = db.collection('tasks')
+    
+  app.use(express.urlencoded({ extended: true}))
 
 
 // main page
 app.get('/', (req, res) => {
   // res.send("we are here");
-  res.sendFile(__dirname + '/index.html');
+  res.sendFile(dirname + '/index.html');
 })
 
 app.post('/addTask', (req, res) => {
-  console.log(res.body.value());
-  console.log('oo')
+  tasksCollection
+    .insertOne(req.body)
+    .then(result => {
+      console.log(result)
+    })
+    .catch(error => console.error(error));
   res.redirect('/');
 })
 
 
-// listening requests
+
+
+    // listening requests
+    
 app.listen(PORT, () => {
   console.log("it's working");
 })
+
+
+}
+)
