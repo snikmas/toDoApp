@@ -9,6 +9,8 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const URI = process.env.DB_STRING
 
+app.set('view engine', 'ejs');
+
 // exttracting data from the form element and add them to the body property in the req object
 
 
@@ -24,14 +26,20 @@ MongoClient.MongoClient.connect(URI)
 // main page
 app.get('/', (req, res) => {
   // res.send("we are here");
-  res.sendFile(dirname + '/index.html');
+  db.collection('tasks').find().toArray();
+  res.render('index.ejs', {})
 })
 
 app.post('/addTask', (req, res) => {
+  const task = {
+    task: req.body.task,
+    comleted: req.body.completed === 'true' ? true : false
+  };
+
   tasksCollection
     .insertOne(req.body)
     .then(result => {
-      console.log(result)
+      console.log(result, task)
     })
     .catch(error => console.error(error));
   res.redirect('/');
